@@ -1,8 +1,15 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-# phone_number = PhoneNumberField(blank=True, region='IN')
+from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+
+class CustomUser(AbstractUser):
+    phone_number = PhoneNumberField(blank=True, region='IN')
+
+    def __str__(self):
+        return self.username
+
+
 class Note(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()

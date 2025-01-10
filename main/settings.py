@@ -146,6 +146,8 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+
+# allauth settings
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
@@ -174,3 +176,7 @@ INVITATIONS_INVITATION_EXPIRY = 60  # days
 INVITATIONS_EMAIL_SUBJECT_PREFIX = 'Invitation to join'
 INVITATIONS_SIGNUP_REDIRECT = 'account_login'
 INVITATIONS_INVITATION_ONLY = True  # for allauth
+
+
+# subclass AbstractUser
+AUTH_USER_MODEL = 'app.CustomUser'

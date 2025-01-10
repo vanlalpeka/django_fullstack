@@ -1,5 +1,21 @@
 from django.contrib import admin
-from .models import Note
+from django.contrib.auth.admin import UserAdmin
+from .models import CustomUser, Note
 
-# Register your models here.
-admin.site.register(Note)
+# class CustomUserAdmin(UserAdmin):
+#     fieldsets = UserAdmin.fieldsets + (
+#         (None, {'fields': ('phone_number',)}),
+#     )
+
+class CustomUserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'email', 'phone_number')
+
+admin.site.register(CustomUser, CustomUserAdmin)
+
+
+class NoteAdmin(admin.ModelAdmin):
+    list_display = ('title', 'content', 'created_at')
+    search_fields = ('title', 'content')
+    list_filter = ('title', 'content')
+
+admin.site.register(Note, NoteAdmin)

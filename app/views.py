@@ -6,6 +6,7 @@ from .models import Note
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View, ListView, DetailView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.models import User
 
 
 # def landing_page(request):
@@ -35,3 +36,11 @@ class NoteDetailView(LoginRequiredMixin, DetailView):
     model = Note
     template_name = 'app/note_detail.html'
     context_object_name = 'note'
+
+class UserProfileDetailView(LoginRequiredMixin, DetailView):
+    model = User
+    template_name = 'app/profile.html'
+    context_object_name = 'profile'
+
+    def get_queryset(self):
+        return User.objects.filter(id=self.request.user.id)
