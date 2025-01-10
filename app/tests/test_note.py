@@ -1,5 +1,5 @@
 import pytest
-from .models import Note
+from ..models import Note
 
 @pytest.fixture
 def note():
