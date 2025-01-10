@@ -31,7 +31,7 @@
                     <li><a href="{% url 'custom_logout' %}">Logout</a></li>
                 {% else %}
                     <li><a href="{% url 'account_login' %}">Login</a></li>
-                    <li><a href="{% url 'account_signup' %}">Signup</a></li>
+                    <!-- <li><a href="{% url 'account_signup' %}">Signup</a></li> -->
                 {% endif %}
                 </ul>
 
@@ -44,7 +44,7 @@
                     <li><a href="{% url 'custom_logout' %}">Logout</a></li>
                 {% else %}
                     <li><a href="{% url 'account_login' %}">Login</a></li>
-                    <li><a href="{% url 'account_signup' %}">Signup</a></li>
+                    <!-- <li><a href="{% url 'account_signup' %}">Signup</a></li> -->
                 {% endif %}
                 </ul>
                 <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -98,8 +98,8 @@
     <script>
 
 $(document).ready(function(){
-    $('.sidenav').sidenav();
-    $('.dropdown-trigger').dropdown();
+    // $('.sidenav').sidenav();
+    $('.dropdown-trigger').dropdown({ hover: false });
   });
     </script>
 </body>
