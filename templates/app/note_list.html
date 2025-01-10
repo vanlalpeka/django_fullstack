@@ -5,6 +5,7 @@
     <ul>
         {% for note in notes %}
             <li>{{ note.title }}: {{ note.content }}</li>
+        <a href="{% url 'note_detail' note.id %}">View Note</a>
         {% endfor %}
     </ul>
 {% endblock %}

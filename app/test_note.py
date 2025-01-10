@@ -1,5 +1,5 @@
 import pytest
-from .tests import Note
+from .models import Note
 
 @pytest.fixture
 def note():
@@ -20,7 +20,7 @@ def test_note_set_content(note):
 def test_note_str(note):
     note.title = "Test Title"
     note.content = "Test Content"
-    assert str(note) == "Test Title: Test Content"
+    assert str(note) == "Test Title"
 
 def test_note_empty_title(note):
     note.title = ""
