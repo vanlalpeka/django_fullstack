@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'app',
     'invitations',
+    "phonenumber_field",
 ]
 
 MIDDLEWARE = [

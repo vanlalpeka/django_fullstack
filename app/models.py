@@ -1,4 +1,6 @@
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
+# phone_number = PhoneNumberField(blank=True, region='IN')
 
 # Create your models here.
 class Note(models.Model):
