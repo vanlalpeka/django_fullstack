@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}KMS{% endblock %}</title>
+    {% block css %}
+    {% endblock %}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Material UI Kit CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
@@ -102,5 +104,7 @@ $(document).ready(function(){
     $('.dropdown-trigger').dropdown({ hover: false });
   });
     </script>
+    {% block js %}
+    {% endblock %}
 </body>
 </html>
