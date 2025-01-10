@@ -7,3 +7,5 @@ pytest-django
 django-invitations
 django-jazzmin
 "django-phonenumber-field[phonenumberslite]"
+django-import-export
+"tablib[xlsx,xls,csv]"

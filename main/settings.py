@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'app',
     'invitations',
     "phonenumber_field",
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -180,3 +181,9 @@ INVITATIONS_INVITATION_ONLY = True  # for allauth
 
 # subclass AbstractUser
 AUTH_USER_MODEL = 'app.CustomUser'
+
+# import_export settings
+IMPORT_EXPORT_SKIP_ADMIN_LOG=False
+
+from import_export.formats.base_formats import XLSX, XLS, CSV
+IMPORT_EXPORT_FORMATS = [XLSX, XLS, CSV]
