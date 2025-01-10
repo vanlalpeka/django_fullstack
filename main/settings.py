@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'app',
+    'invitations',
 ]
 
 MIDDLEWARE = [
@@ -150,7 +151,24 @@ LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
+# ACCOUNT_LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_FORMS = {
     'signup': 'app.forms.CustomSignupForm',
 }
+
+# Settings for django-invitations
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = config('MY_EMAIL')  # Replace with your email address
+EMAIL_HOST_PASSWORD = config('MY_EMAIL_PASSWORD')  # Replace with your email password
+DEFAULT_FROM_EMAIL = config('MY_EMAIL')   # Replace with your email address
+ACCOUNT_ADAPTER = 'invitations.models.InvitationsAdapter'
+INVITATIONS_ADAPTER = ACCOUNT_ADAPTER
+INVITATIONS_INVITATION_EXPIRY = 60  # days
+INVITATIONS_EMAIL_SUBJECT_PREFIX = 'Invitation to join'
+INVITATIONS_SIGNUP_REDIRECT = 'account_login'
+INVITATIONS_INVITATION_ONLY = True  # for allauth

@@ -8,6 +8,9 @@
     <form method="post" action="{% url 'account_login' %}">
         {% csrf_token %}
         {{ form.as_p }}
+        {% if next %}
+        <input type="hidden" name="next" value="{{ next }}">
+        {% endif %}
         <button type="submit" class="waves-effect btn">Login</button>
     </form>
     <p>
