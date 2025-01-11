@@ -1,4 +1,3 @@
-<!-- filepath: /home/peka/django_fullstack/myapp/templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +9,8 @@
 
   {% block extrastyle %}
   {% endblock extrastyle %}
-  <!-- Data Table CSS -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
-  
+
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- Material UI Kit CSS -->
@@ -32,7 +30,7 @@
   </main>
 
     <!-- Footer -->
-    <footer class="page-footer">
+    <footer class="page-footer light-blue lighten-6">
         <!-- <div class="container">
           <div class="row">
             <div class="col l6 s12">
@@ -52,17 +50,11 @@
         </div> -->
         <div class="footer-copyright">
           <div class="container">
-            Copyright © {% now "Y" %} 
+              Copyright © {% now "Y" %} , All Rights Reserved.
           <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
           </div>
         </div>
       </footer>
-
-    
-
-
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
 
     <!-- Material UI Kit JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

@@ -35,6 +35,13 @@ class NoteDetailView(LoginRequiredMixin, DetailView):
     template_name = 'app/note_detail.html'
     context_object_name = 'note'
 
+    # def get(self, request, pk, *args, **kwargs):        
+    #     template = 'app/note_detail.html'
+    #     print(Note.objects.get(pk=pk))
+    #     return render(request, template, context={'note': Note.objects.get(pk=pk)})
+
+
+
 class UserProfileDetailView(LoginRequiredMixin, DetailView):
     model = User
     template_name = 'app/profile.html'

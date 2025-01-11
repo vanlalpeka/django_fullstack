@@ -22,9 +22,9 @@ class NoteAjaxDatatableView(AjaxDatatableView):
 
     def customize_row(self, row, obj):
         # 'row' is a dictionary representing the current row, and 'obj' is the current object.
-        row['file_number'] = f'<a href="/notes/{obj.id}">{obj.file_number}</a>'
-        row['concerned_department'] =Truncator(obj.concerned_department).chars(20)
-        row['comment'] =Truncator(obj.comment).chars(30)
+        row['file_number'] = f'<a href="/notes/{int(obj.pk)}">{obj.file_number}</a>'
+        # row['concerned_department'] =Truncator(obj.concerned_department).chars(20)
+        # row['comment'] =Truncator(obj.comment).chars(30)
         row['date'] = obj.date.strftime("%d.%m.%Y")
         return
 
