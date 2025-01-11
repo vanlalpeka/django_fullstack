@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'invitations',
     "phonenumber_field",
     'import_export',
+    'ajax_datatable',
 ]
 
 MIDDLEWARE = [
@@ -187,3 +188,11 @@ IMPORT_EXPORT_SKIP_ADMIN_LOG=False
 
 from import_export.formats.base_formats import XLSX, XLS, CSV
 IMPORT_EXPORT_FORMATS = [XLSX, XLS, CSV]
+
+# ajax_datatable settings
+AJAX_DATATABLE_MAX_COLUMNS = 30
+AJAX_DATATABLE_TRACE_COLUMNDEFS = True
+AJAX_DATATABLE_TRACE_QUERYDICT = True
+AJAX_DATATABLE_TRACE_QUERYSET = True
+AJAX_DATATABLE_TEST_FILTERS = True
+AJAX_DATATABLE_DISABLE_QUERYSET_OPTIMIZATION = True

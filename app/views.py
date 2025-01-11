@@ -27,10 +27,8 @@ def custom_logout_view(request):
 class LandingPageView(TemplateView):
     template_name = 'app/landing_page.html'
 
-class NoteListView(LoginRequiredMixin, ListView):
-    model = Note
+class NoteListView(LoginRequiredMixin, TemplateView):
     template_name = 'app/note_list.html'
-    context_object_name = 'notes'
 
 class NoteDetailView(LoginRequiredMixin, DetailView):
     model = Note
