@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'invitations',
     "phonenumber_field",
     'import_export',
-    'ajax_datatable',
 ]
 
 MIDDLEWARE = [
