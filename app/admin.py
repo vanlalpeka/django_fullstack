@@ -35,7 +35,7 @@ class NoteResource(resources.ModelResource):
 
 @admin.register(Note)
 class NoteAdmin(ImportExportModelAdmin, ExportActionMixin):
-    list_display = ('title', 'content', 'created_at')
-    search_fields = ('title', 'content')
-    list_filter = ('title', 'content')
+    list_display = ('file_number', 'concerned_department', 'date')
+    search_fields = ('file_number', 'concerned_department')
+    list_filter = ('file_number', 'concerned_department')
     resource_classes = [NoteResource]

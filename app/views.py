@@ -41,4 +41,4 @@ class UserProfileDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'profile'
 
     def get_queryset(self):
-        return User.objects.filter(id=self.request.user.id)
+        return User.objects.get(id=self.request.user.id)

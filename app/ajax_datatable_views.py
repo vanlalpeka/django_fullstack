@@ -1,5 +1,6 @@
 from ajax_datatable.views import AjaxDatatableView
 from .models import Note
+from django.utils.text import Truncator
 
 
 class NoteAjaxDatatableView(AjaxDatatableView):
@@ -12,10 +13,20 @@ class NoteAjaxDatatableView(AjaxDatatableView):
 
     column_defs = [
         # AjaxDatatableView.render_row_tools_column_def(),
-        {'name': 'id', 'visible': False, },
-        {'name': 'title', 'visible': True, },
-        {'name': 'content', 'visible': True, },
+        {'name': 'file_number', 'visible': True, },
+        {'name': 'concerned_department', 'visible': True, },
+        {'name': 'comment', 'visible': True, },
+        {'name': 'date', 'visible': True, },
     ]
+
+
+    def customize_row(self, row, obj):
+        # 'row' is a dictionary representing the current row, and 'obj' is the current object.
+        row['file_number'] = f'<a href="/notes/{obj.id}">{obj.file_number}</a>'
+        row['concerned_department'] =Truncator(obj.concerned_department).chars(20)
+        row['comment'] =Truncator(obj.comment).chars(30)
+        row['date'] = obj.date.strftime("%d.%m.%Y")
+        return
 
     # def get_initial_queryset(self, request=None):
     #     queryset = self.model.objects.all()
