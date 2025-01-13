@@ -1,18 +1,10 @@
-This is a Django app to manage notes.
+This is a fullstack Django app with minimal features (listed below).
+The intention is to use this as a (boilerplate) starting point to accelerate development.
 
-
-Primary features:
-1. Login with socials
-2. Invite only registration
-3. Bulk import-export records from Admin screens
-4. Automated tests using pytest 
-
-
-Housekeeping tasks:
-1. pg_dump -Fc --username=user --dbname=dbname --clean --file=/path/to/backup-`date +%Y-%m-%d-%H-%M-%S`.sql
-2. python manage.py clearsessions
-
-
-sudo fuser -k 8000/tcp
-
-sudo systemctl restart postgresql
+Django plugins are used to enable the following features:
+1. Invite only registration
+2. Bulk import-export data (.xlsx, .xls, .csv) from Admin screens
+3. Automated tests using pytest 
+4. Google's Material UI styling
+5. Postgresql datatabase integration
+6. Phone number data management
