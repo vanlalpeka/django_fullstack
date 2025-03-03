@@ -7,8 +7,12 @@
 
 <!-- <link href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.dataTables.css" /> -->
 
-<link href="//cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css" />
-<link href="{% static '/vendor/select2/css/select2.min.css' %}" />
+<!-- <link href="//cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css" />
+<link href="{% static '/vendor/select2/css/select2.min.css' %}" /> -->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.css" />
+<link href="https://cdn.datatables.net/2.2.2/css/dataTables.material.css" />
+
 
 {% endblock extrastyle %}
 
@@ -23,14 +27,15 @@
 
 {% block extrajs %}
     <!-- django-ajax-datatables -->
+     <!-- This is needed for the ajax-datatables to work -->
     <script type="text/javascript" src="{% static 'ajax_datatable/js/utils.js' %}"></script>
 
     <!-- <script src="https://cdn.datatables.net/plug-ins/2.2.1/dataRender/ellipsis.js"></script> -->
     
-
-    
     <!-- django-ajax-datatables -->
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+
+    <!-- Column-wise filtering, but no pagination styling -->
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
 
@@ -39,11 +44,12 @@
     <!-- Datatables -->
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
     <!-- <script src="//cdn.datatables.net/2.2.1/js/dataTables.min.js"></script> -->
-
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.js"></script> -->
-    <!-- <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script> -->
-    <!-- <script type="text/javascript" src="https://cdn.datatables.net/2.2.1/js/dataTables.material.js"></script> -->
+
+    <!-- No column wise filtering, but pagination styling -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.js"></script>
+    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/2.2.1/js/dataTables.material.js"></script> -->
 
     <!-- <script type="text/javascript" src="{% static '/vendor/select2/js/select2.min.js' %}"></script> -->
 
