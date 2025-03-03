@@ -40,11 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'app',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'app',
     # 'invitations',
     "phonenumber_field",
     'import_export',
@@ -156,7 +156,8 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_LOGIN_METHODS = {"username"}
-ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = False
+# ACCOUNT_EMAIL_REQUIRED = True
 
 # ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
 # ACCOUNT_LOGIN_REDIRECT_URL = '/'

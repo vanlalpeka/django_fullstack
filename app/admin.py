@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import CustomUser, Note
 from import_export import resources
+from django.contrib.auth.hashers import make_password
 
 
 from import_export.admin import ImportExportModelAdmin, ExportActionMixin
@@ -16,6 +17,10 @@ from import_export.widgets import ForeignKeyWidget, DateTimeWidget
 
 
 class CustomUserResource(resources.ModelResource):
+
+    def before_import_row(self, row, **kwargs):
+        value = row.get('password')
+        row['password'] = make_password(value)
 
     class Meta:
         model = CustomUser 
