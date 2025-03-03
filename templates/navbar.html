@@ -16,13 +16,14 @@
             </ul>
         </div>
     </nav>
-    <ul id="nav-mobile" class="sidenav">
-        <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-        <li><a href="{% url 'note_list' %}">Notes</a></li>
-    {% if user.is_authenticated %}
-        <li><a href="{% url 'custom_logout' %}">Logout</a></li>
-    {% else %}
-        <li><a href="{% url 'account_login' %}">Login</a></li>
-    {% endif %}
-    </ul>
 </div>
+
+<ul id="nav-mobile" class="sidenav">
+    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+    <li><a href="{% url 'note_list' %}">Notes</a></li>
+{% if user.is_authenticated %}
+    <li><a href="{% url 'custom_logout' %}">Logout</a></li>
+{% else %}
+    <li><a href="{% url 'account_login' %}">Login</a></li>
+{% endif %}
+</ul>
