@@ -72,7 +72,9 @@ class DashboardView(LoginRequiredMixin, DetailView):
                     text='count',  # Show count on the bars
                     title="Notes per Concerned Department",
                     labels={'count': 'Number of Notes', 'concerned_department': 'Department'})
-        
+        fig1.update_layout(margin=dict(l=0, r=0))
+
+
 
         # Group by date and count occurrences
         df['month'] = pd.to_datetime(df['date'])
@@ -92,6 +94,9 @@ class DashboardView(LoginRequiredMixin, DetailView):
         
         # Position the text labels above the points
         fig2.update_traces(textposition='top center')
+        fig2.update_layout(margin=dict(l=0, r=0))
+
+
         
         # plots = [fig1.to_html(full_html=False), fig2.to_html(full_html=False)]
 
