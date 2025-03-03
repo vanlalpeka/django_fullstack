@@ -15,8 +15,8 @@ class NoteAjaxDatatableView(AjaxDatatableView):
         # AjaxDatatableView.render_row_tools_column_def(),
         {'name': 'file_number', 'visible': True, },
         {'name': 'concerned_department', 'visible': True, },
-        {'name': 'comment', 'visible': True, },
         {'name': 'date', 'visible': True, },
+        {'name': 'subject', 'visible': True, },
     ]
 
 

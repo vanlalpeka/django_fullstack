@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import LandingPageView, NoteDetailView, custom_logout_view, UserProfileDetailView, NoteListView
+from .views import LandingPageView, NoteDetailView, custom_logout_view, UserProfileDetailView, NoteListView, DashboardView
 from . import ajax_datatable_views
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('logout/', custom_logout_view, name='custom_logout'),
     path('profile/', UserProfileDetailView.as_view(), name='profile'),
     path('notes/<int:pk>/', NoteDetailView.as_view(), name='note_detail'),
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),    
 ]

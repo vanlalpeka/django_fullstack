@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'app',
-    'invitations',
+    # 'invitations',
     "phonenumber_field",
     'import_export',
     'ajax_datatable',
@@ -88,12 +88,12 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config('DB_ENGINE'),
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+        "ENGINE": config("DB_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": config("DB_NAME", BASE_DIR / "db.sqlite3"),
+        "USER": config("DB_USER", "user"),
+        "PASSWORD": config("DB_PASSWORD", "password"),
+        "HOST": config("DB_HOST", "localhost"),
+        "PORT": config("DB_PORT", "5432"),
     }
 }
 
@@ -155,8 +155,9 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_LOGIN_METHODS = {"username"}
 ACCOUNT_EMAIL_REQUIRED = True
+
 # ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
 # ACCOUNT_LOGIN_REDIRECT_URL = '/'
 
@@ -164,20 +165,20 @@ ACCOUNT_FORMS = {
     'signup': 'app.forms.CustomSignupForm',
 }
 
-# Settings for django-invitations
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = config('MY_EMAIL')  # Replace with your email address
-EMAIL_HOST_PASSWORD = config('MY_EMAIL_PASSWORD')  # Replace with your email password
-DEFAULT_FROM_EMAIL = config('MY_EMAIL')   # Replace with your email address
-ACCOUNT_ADAPTER = 'invitations.models.InvitationsAdapter'
-INVITATIONS_ADAPTER = ACCOUNT_ADAPTER
-INVITATIONS_INVITATION_EXPIRY = 60  # days
-INVITATIONS_EMAIL_SUBJECT_PREFIX = 'Invitation to join'
-INVITATIONS_SIGNUP_REDIRECT = 'account_login'
-INVITATIONS_INVITATION_ONLY = True  # for allauth
+# # Settings for django-invitations
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = config('MY_EMAIL')  # Replace with your email address
+# EMAIL_HOST_PASSWORD = config('MY_EMAIL_PASSWORD')  # Replace with your email password
+# DEFAULT_FROM_EMAIL = config('MY_EMAIL')   # Replace with your email address
+# ACCOUNT_ADAPTER = 'invitations.models.InvitationsAdapter'
+# INVITATIONS_ADAPTER = ACCOUNT_ADAPTER
+# INVITATIONS_INVITATION_EXPIRY = 60  # days
+# INVITATIONS_EMAIL_SUBJECT_PREFIX = 'Invitation to join'
+# INVITATIONS_SIGNUP_REDIRECT = 'account_login'
+# INVITATIONS_INVITATION_ONLY = True  # for allauth
 
 
 # subclass AbstractUser

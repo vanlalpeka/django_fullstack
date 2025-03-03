@@ -1,12 +1,17 @@
 django
 python-decouple
 psycopg2-binary
-gunicorn
+# gunicorn
 django-allauth
-pytest
-pytest-django
-django-invitations
+# pytest
+# pytest-django
+# django-invitations
 django-jazzmin
-"django-phonenumber-field[phonenumberslite]"
+django-phonenumber-field[phonenumberslite]
 django-import-export
-"tablib[xlsx,xls,csv]"
+tablib[xlsx,xls,csv]
+django-ajax-datatable
+PyJWT
+cryptography
+plotly
+pandas

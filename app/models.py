@@ -13,9 +13,11 @@ class CustomUser(AbstractUser):
 
 class Note(models.Model):
     file_number = models.CharField(max_length=200)
+    ref_no = models.CharField(max_length=100, blank=True, null=True)
+    date = models.DateField(default=timezone.now)
+    subject = models.CharField(max_length=500, blank=True, null=True)
     concerned_department = models.CharField(max_length=200)
     comment = models.TextField()
-    date = models.DateField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

@@ -8,6 +8,8 @@ from django.views.generic import View, ListView, DetailView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User
 
+import plotly.express as px
+import pandas as pd
 
 # def landing_page(request):
 #     return render(request, 'app/landing_page.html')
@@ -49,3 +51,52 @@ class UserProfileDetailView(LoginRequiredMixin, DetailView):
 
     def get_queryset(self):
         return User.objects.get(id=self.request.user.id)
+    
+class DashboardView(LoginRequiredMixin, DetailView):
+    # model = Note
+    # template_name = 'app/dashboard.html'
+    context_object_name = 'dashboard'
+
+    def get(self, request):        
+        template = 'app/dashboard.html'
+        df = pd.DataFrame(list(Note.objects.all().values()))
+        # Group by concerned_department and count occurrences
+        department_counts = df['concerned_department'].value_counts().reset_index()
+        department_counts.columns = ['concerned_department', 'count']
+
+        # Create a horizontal bar chart
+        fig1 = px.bar(department_counts, 
+                    x='count', 
+                    y='concerned_department', 
+                    orientation='h',
+                    text='count',  # Show count on the bars
+                    title="Notes per Concerned Department",
+                    labels={'count': 'Number of Notes', 'concerned_department': 'Department'})
+        
+
+        # Group by date and count occurrences
+        df['month'] = pd.to_datetime(df['date'])
+        df['month'] = df['month'].dt.strftime('%Y-%b')
+        month_counts = df['month'].value_counts().reset_index().sort_values('month')
+        month_counts.columns = ['month', 'count']
+        # print(month_counts)
+
+        # Line chart: Notes over Time
+        fig2 = px.line(month_counts,
+                    x='month',
+                    y='count',
+                    markers=True,
+                    text='count',  # Show count on the bars
+                    title='Notes per month',
+                    labels={'month': 'Month', 'count': 'Number of Notes'})
+        
+        # Position the text labels above the points
+        fig2.update_traces(textposition='top center')
+        
+        # plots = [fig1.to_html(full_html=False), fig2.to_html(full_html=False)]
+
+        return render(request, template, 
+                    #   context={"fig1": fig1.to_html(full_html=False, config={'displaylogo': False}, include_plotlyjs=False),
+                    #            "fig2": fig2.to_html(full_html=False, config={'displaylogo': False}, include_plotlyjs=False)})
+                      context={"fig1": fig1.to_html(full_html=False, config={'displaylogo': False}),
+                               "fig2": fig2.to_html(full_html=False, config={'displaylogo': False})})
