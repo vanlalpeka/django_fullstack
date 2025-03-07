@@ -61,19 +61,16 @@
                 $('#datatable'),
                 "{% url 'ajax_datatable_notes' %}",
                 {
-                    // responsive: true,
-                    // extra_options (example)
-                    processing: true,
-                    // serverside: true,
-                    autoWidth: false,
-                    // full_row_select: true,
-                    scrollX: false,
-                    paging: true,
-                    // filterDropDown: {
-                    //     columns: [
-                    //         idx: 2
-                    //     ]
-                    // },
+                    processing: false,
+              autoWidth: false,
+              full_row_select: false,
+              scrollX: true,
+              processing: false,
+              full_row_select: false,
+              scrollX: true,
+              //select: true,
+              lengthChange: true,
+              dom: 'Blfrtip',
                 }, {
                     // extra_data
                     // ...

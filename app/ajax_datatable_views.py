@@ -13,10 +13,10 @@ class NoteAjaxDatatableView(AjaxDatatableView):
 
     column_defs = [
         # AjaxDatatableView.render_row_tools_column_def(),
-        {'name': 'file_number', 'visible': True, },
-        {'name': 'concerned_department', 'visible': True, },
-        {'name': 'date', 'visible': True, },
-        {'name': 'subject', 'visible': True, },
+        {'name': 'file_number', 'visible': True, 'lookup_field': '__icontains',},
+        {'name': 'concerned_department', 'foreign_field': 'concerned_department__name', 'visible': True, 'choices': True, 'autofilter': True,},
+        {'name': 'date', 'visible': True,'lookup_field': '__icontains', },
+        {'name': 'subject', 'visible': True, 'lookup_field': '__icontains', },
     ]
 
 

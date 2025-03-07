@@ -187,6 +187,8 @@ AUTH_USER_MODEL = 'app.CustomUser'
 
 # import_export settings
 IMPORT_EXPORT_SKIP_ADMIN_LOG=False
+IMPORT_EXPORT_IMPORT_PERMISSION_CODE = "import"
+IMPORT_EXPORT_EXPORT_PERMISSION_CODE = "export"
 
 from import_export.formats.base_formats import XLSX, XLS, CSV
 IMPORT_EXPORT_FORMATS = [XLSX, XLS, CSV]

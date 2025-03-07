@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, Note
+from .models import CustomUser, Note, Department
 from import_export import resources
 from django.contrib.auth.hashers import make_password
 
@@ -14,6 +14,14 @@ from import_export.widgets import ForeignKeyWidget, DateTimeWidget
 #         (None, {'fields': ('phone_number',)}),
 #     )
 
+class DepartmentResource(resources.ModelResource):
+    class Meta:
+        model = Department 
+        permissions = (('import_department', 'Can import'), ('export_department', 'Can export'))
+
+@admin.register(Department)
+class DepartmentAdmin(ImportExportModelAdmin, ExportActionMixin):
+    resource_classes = [DepartmentResource]
 
 
 class CustomUserResource(resources.ModelResource):
@@ -34,9 +42,16 @@ class CustomUserAdmin(ImportExportModelAdmin, ExportActionMixin):
 
 
 class NoteResource(resources.ModelResource):
+    concerned_department = fields.Field(
+        column_name = "concerned_department",
+        attribute = "concerned_department",
+        widget = ForeignKeyWidget(Department, 'name')
+    )
 
     class Meta:
         model = Note 
+        permissions = (('import_note', 'Can import'), ('export_note', 'Can export'))
+
 
 @admin.register(Note)
 class NoteAdmin(ImportExportModelAdmin, ExportActionMixin):

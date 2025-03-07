@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth import logout
-from .models import Note
+from .models import Note, Department
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View, ListView, DetailView, TemplateView
@@ -60,9 +60,12 @@ class DashboardView(LoginRequiredMixin, DetailView):
     def get(self, request):        
         template = 'app/dashboard.html'
         df = pd.DataFrame(list(Note.objects.all().values()))
+        dpt = list(Department.objects.all().values())
+        # print(dpt)
         # Group by concerned_department and count occurrences
-        department_counts = df['concerned_department'].value_counts().reset_index()
-        department_counts.columns = ['concerned_department', 'count']
+        department_counts = df['concerned_department_id'].value_counts().reset_index()
+        department_counts.columns = ['concerned_department_id', 'count']
+        department_counts["concerned_department"] = department_counts["concerned_department_id"].map({d['id']: d['name'] for d in dpt})	
 
         # Create a horizontal bar chart
         fig1 = px.bar(department_counts, 
