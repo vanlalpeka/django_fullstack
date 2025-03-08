@@ -15,13 +15,20 @@ class Department(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+class NoteType(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
 class Note(models.Model):
     file_number = models.CharField(max_length=200)
     ref_no = models.CharField(max_length=100, blank=True, null=True)
     date = models.DateField(default=timezone.now)
-    concerned_department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    concerned_department = models.ForeignKey(Department, on_delete=models.CASCADE, blank=True, null=True)
     subject = models.CharField(max_length=500, blank=True, null=True)
+    type = models.ForeignKey(NoteType, on_delete=models.CASCADE, blank=True, null=True)
     comment = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
