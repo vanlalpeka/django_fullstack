@@ -28,10 +28,11 @@
                 $('#datatable'),
                 "{% url 'ajax_datatable_notes' %}",
                 {
-                    // processing: false,
-                    // autoWidth: false,
+                    processing: false,
+                    autoWidth: false,
                     // full_row_select: true,
-                    // scrollX: false
+                    scrollX: false,
+                    responsive: true,
                 }, {
                     // extra_data
                     // ...

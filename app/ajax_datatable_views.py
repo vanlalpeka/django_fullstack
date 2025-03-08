@@ -11,7 +11,7 @@ class NoteAjaxDatatableView(AjaxDatatableView):
     length_menu = [[10, 20, 50, 100, -1], [10, 20, 50, 100, 'all']]
     # search_values_separator = '+'
     show_date_filters = True
-    # show_column_filters = True
+    show_column_filters = True
 
     column_defs = [
         # AjaxDatatableView.render_row_tools_column_def(),
@@ -19,6 +19,8 @@ class NoteAjaxDatatableView(AjaxDatatableView):
         {'name': 'concerned_department', 'foreign_field': 'concerned_department__name', 'visible': True, 'choices': True, 'autofilter': True,},
         {'name': 'date', 'visible': True,'lookup_field': '__icontains', },
         {'name': 'subject', 'visible': True, 'lookup_field': '__icontains', },
+        {'name': 'type', 'foreign_field': 'type__name', 'visible': True, 'choices': True, 'autofilter': True,},
+        # {'name': 'comment', 'visible': False, 'lookup_field': '__icontains', },
     ]
 
 

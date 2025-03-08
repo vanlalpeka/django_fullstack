@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 
 class CustomUser(AbstractUser):
+    designation =  models.CharField(max_length=200, blank=True, null=True)
     phone_number = PhoneNumberField(blank=True, region='IN')
 
     def __str__(self):

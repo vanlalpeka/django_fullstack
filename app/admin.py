@@ -47,8 +47,8 @@ class CustomUserResource(resources.ModelResource):
 
 @admin.register(CustomUser)
 class CustomUserAdmin(ImportExportModelAdmin, ExportActionMixin):
-    list_display = ('username', 'email', 'phone_number')
-    search_fields = ('username', 'email', 'phone_number')
+    list_display = ('username', 'designation', 'phone_number')
+    search_fields = ('username', 'designation', 'phone_number')
     resource_classes = [CustomUserResource]
 
 
@@ -67,7 +67,7 @@ class NoteResource(resources.ModelResource):
 
 @admin.register(Note)
 class NoteAdmin(ImportExportModelAdmin, ExportActionMixin):
-    list_display = ('file_number', 'concerned_department', 'date')
+    list_display = ('file_number', 'subject' ,'type', 'concerned_department', 'date')
     search_fields = ('file_number', 'concerned_department')
     list_filter = ('file_number', 'concerned_department')
     resource_classes = [NoteResource]
