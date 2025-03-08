@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+{% load allauth account %}
+
 {% block title %}Login{% endblock %}
 
 {% block content %}
@@ -8,16 +11,16 @@
     <form method="post" action="{% url 'account_login' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        {% if next %}
+        <!-- {% if next %}
         <input type="hidden" name="next" value="{{ next }}">
-        {% endif %}
-        <button type="submit" class="waves-effect btn">Login</button>
+        {% endif %} -->
+        <button type="submit" class="btn btn-primary">Login</button>
     </form>
-    <p>
+    <!-- <p>
         <a href="{% url 'account_reset_password' %}">Forgot Password?</a>
     </p>
     <p>
         Don't have an account? <a href="{% url 'account_signup' %}">Sign up here</a>.
-    </p>
+    </p> -->
 </div>
 {% endblock %}

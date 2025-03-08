@@ -9,7 +9,9 @@ class NoteAjaxDatatableView(AjaxDatatableView):
     title = 'Note'
     # initial_order = [["id", "asc"], ]
     length_menu = [[10, 20, 50, 100, -1], [10, 20, 50, 100, 'all']]
-    search_values_separator = '+'
+    # search_values_separator = '+'
+    show_date_filters = True
+    # show_column_filters = True
 
     column_defs = [
         # AjaxDatatableView.render_row_tools_column_def(),
