@@ -75,7 +75,7 @@ class DashboardView(LoginRequiredMixin, DetailView):
                     text='count',  # Show count on the bars
                     title="Notes per Concerned Department",
                     labels={'count': 'Number of Notes', 'concerned_department': 'Department'})
-        fig1.update_layout(margin=dict(l=0, r=0))
+        fig1.update_layout(margin=dict(l=0, r=0,pad=5))
 
 
 
