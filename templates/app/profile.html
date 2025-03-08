@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <h2>Update Profile</h2>
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+   <div class="card p-4 d-flex flex-column justify-content-center align-items-center"> 
+        <img class="rounded-circle" alt="img" src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
+        <span class="name mt-3">{{ user.first_name }} {{user.last_name}}</span> 
+        <span class="idd">{{user.designation}}</span> 
+    </div> 
+</div>
+
+    <!-- <h2>Update Profile</h2>
     <form method="post">
         {% csrf_token %}
         {{ user_form.as_p }}
         <button type="submit" class="btn">Save</button>
-    </form>
-</div>
+    </form> -->
 {% endblock %}

@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth import logout
-from .models import Note, Department
+from .models import Note, Department, CustomUser
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View, ListView, DetailView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
 import plotly.express as px
 import pandas as pd
@@ -44,13 +44,18 @@ class NoteDetailView(LoginRequiredMixin, DetailView):
 
 
 
-class UserProfileDetailView(LoginRequiredMixin, DetailView):
-    model = User
+class CustomUserUpdateView(LoginRequiredMixin, DetailView):
+    model = CustomUser
     template_name = 'app/profile.html'
-    context_object_name = 'profile'
 
-    def get_queryset(self):
-        return User.objects.get(id=self.request.user.id)
+    # context_object_name = 'profile'
+
+    # def get_queryset(self, request, pk, *args, **kwargs):
+    #     # return CustomUser.objects.get(id=pk)
+    #     template_name = 'app/profile.html'
+    #     context = {}
+
+    #     return render(request, template_name, context)
     
 class DashboardView(LoginRequiredMixin, DetailView):
     # model = Note
