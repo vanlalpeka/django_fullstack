@@ -3,7 +3,11 @@
 {% block content %}
 <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
    <div class="card p-4 d-flex flex-column justify-content-center align-items-center"> 
-        <img class="rounded-circle" alt="img" src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
+    {% if user.image %}
+        <img class="rounded mx-auto d-block" alt="img" src="{{ user.image.url }}" height="200" />
+    {% else %}
+        <img class="rounded-circle"  height="200" /> <i class="fa-solid fa-user fa-2xl"></i>
+    {% endif %}
         <span class="name mt-3">{{ user.first_name }} {{user.last_name}}</span> 
         <span class="idd">{{user.designation}}</span> 
     </div> 

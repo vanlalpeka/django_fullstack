@@ -7,6 +7,7 @@ from django.utils import timezone
 class CustomUser(AbstractUser):
     designation =  models.CharField(max_length=200, blank=True, null=True)
     phone_number = PhoneNumberField(blank=True, region='IN')
+    image = models.ImageField(upload_to='profile_pic', blank=True, null=True)  
 
     def __str__(self):
         return self.username
