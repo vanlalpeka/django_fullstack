@@ -15,16 +15,19 @@
 
 </head>
 <body>
-  {% include "navbar.html" %}
 
   <!-- Main content block -->
   <main>
-    <div class="section no-pad-bot" id="index-banner">
-      <div class="container">          
-      {% block content %}
-      {% endblock content %}
+      <div class="container">    
+        <div class="row">
+          <div class="col-sm-9 m-auto">
+            {% include "navbar.html" %}
+
+            {% block content %}
+            {% endblock content %}
+          </div>
+        </div>
       </div>
-    </div>
   </main>
 
     <!-- Footer -->

@@ -3,34 +3,27 @@
 
 {% block content %}
 
-<div class="row">
-  <div class="col s12 m12">
-    <nav>
-      <div class="nav-wrapper card light-blue  darken-4">
-        <div class="col s12">
-          <a href="{% url 'note_list' %}" class="breadcrumb">Notes</a>
-          <a href="#!" class="breadcrumb">Note Detail</a>
-        </div>
-      </div>
-    </nav>
-    <div class="card">
-      <div class="card-content ">
-        <div class="row">
-          <div class="col s12 m6">
-            <p> <strong>File number:</strong> {{ note.file_number }}</p>
-            <p><strong>Concerned Department:</strong> {{ note.concerned_department }}</p>
-            <p><strong>Date:</strong> {{ note.date }}</p>
-            <p><strong>Subject:</strong> {{ note.subject|default_if_none:"" }}</p>
-            <p><strong>Ref. No.:</strong> {{ note.ref_no|default_if_none:"" }}</p>
-            </br>
-          </div>
-          <div class="col s12 m6">
-            <p><strong>Detail:</strong> </br>{{ note.comment }}</p>
-          </div>
-        </div>
-      </div>
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'note_list' %}">Notes</a></li>
+    <li class="breadcrumb-item active">Detail</li>
+    </ul>
+  </nav>
+  <div class="row">
+    <div class="col-sm-3 m-auto">
+        <strong>File number:</strong> {{ note.file_number }}  </br>
+       <strong>Concerned Department:</strong> {{ note.concerned_department }}  </br>
+       <strong>Date:</strong> {{ note.date }}  </br>
+       <strong>Subject:</strong> {{ note.subject|default_if_none:"" }}  </br>
+       <strong>Ref. No.:</strong> {{ note.ref_no|default_if_none:"" }}  </br>
+      </br>
+    </div>
+    <div class="col-sm-9 m-auto">
+       <strong>Detail:</strong> </br>{{ note.comment }}  </br>
     </div>
   </div>
 </div>
+
 
 {% endblock %}
