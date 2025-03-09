@@ -15,18 +15,18 @@ class NoteAjaxDatatableView(AjaxDatatableView):
 
     column_defs = [
         # AjaxDatatableView.render_row_tools_column_def(),
-        {'name': 'date', 'lookup_field': '__icontains', },
-        {'name': 'file_number', 'title': 'File No.', 'lookup_field': '__icontains',},
+        {'name': 'date' },
         {'name': 'concerned_department', 'title':'Department', 'foreign_field': 'concerned_department__name',  'choices': True, 'autofilter': True,},
-        {'name': 'subject','lookup_field': '__icontains', },
         {'name': 'type', 'foreign_field': 'type__name',  'choices': True, 'autofilter': True,},
-        # {'name': 'comment', 'visible': False, 'lookup_field': '__icontains', },
+        {'name': 'subject', },
+        {'name': 'file_number', 'title': 'File No.'},
+        {'name': 'comment', 'visible': True, },
     ]
 
 
     def customize_row(self, row, obj):
         # 'row' is a dictionary representing the current row, and 'obj' is the current object.
-        row['file_number'] = f'<a href="/notes/{int(obj.pk)}">{obj.file_number}</a>'
+        # row['file_number'] = f'<a href="/notes/{int(obj.pk)}">{obj.file_number}</a>'
         # row['concerned_department'] =Truncator(obj.concerned_department).chars(20)
         # row['comment'] =Truncator(obj.comment).chars(30)
         row['date'] = obj.date.strftime("%d.%m.%Y")
