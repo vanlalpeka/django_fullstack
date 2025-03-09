@@ -48,21 +48,21 @@ if (window.location.hostname.includes('localhost')) {
   console.log("Running in DEBUG mode on localhost");
 }
       
-// document.addEventListener("keydown", e => {
-//           // USE THIS TO DISABLE CONTROL AND ALL FUNCTION KEYS
-//           // if (e.ctrlKey || (e.keyCode>=112 && e.keyCode<=123)) {
-//           // THIS WILL ONLY DISABLE CONTROL AND F12
-//           if (e.ctrlKey || e.keyCode==123 || window.location.hostname.includes('localhost')) {
-//             e.stopPropagation();
-//             e.preventDefault();
-//           }
-//         });
+document.addEventListener("keydown", e => {
+          // USE THIS TO DISABLE CONTROL AND ALL FUNCTION KEYS
+          // if (e.ctrlKey || (e.keyCode>=112 && e.keyCode<=123)) {
+          // THIS WILL ONLY DISABLE CONTROL AND F12
+          if (e.ctrlKey || e.keyCode==123 || window.location.hostname.includes('localhost')) {
+            e.stopPropagation();
+            e.preventDefault();
+          }
+        });
 
-        // document.addEventListener("contextmenu", e => {
-        //   if (window.location.hostname.includes('localhost')) {
-        //   e.preventDefault();
-        //   }
-        // }, false); 
+        document.addEventListener("contextmenu", e => {
+          if (window.location.hostname.includes('localhost')) {
+          e.preventDefault();
+          }
+        }, false); 
 
         </script>
 
