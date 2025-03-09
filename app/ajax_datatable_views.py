@@ -9,17 +9,17 @@ class NoteAjaxDatatableView(AjaxDatatableView):
     title = 'Note'
     # initial_order = [["id", "asc"], ]
     length_menu = [[10, 20, 50, 100, -1], [10, 20, 50, 100, 'all']]
-    # search_values_separator = '+'
+    search_values_separator = '+'
     show_date_filters = True
-    show_column_filters = True
+    # show_column_filters = True
 
     column_defs = [
         # AjaxDatatableView.render_row_tools_column_def(),
-        {'name': 'file_number', 'visible': True, 'lookup_field': '__icontains',},
-        {'name': 'concerned_department', 'foreign_field': 'concerned_department__name', 'visible': True, 'choices': True, 'autofilter': True,},
-        {'name': 'date', 'visible': True,'lookup_field': '__icontains', },
-        {'name': 'subject', 'visible': True, 'lookup_field': '__icontains', },
-        {'name': 'type', 'foreign_field': 'type__name', 'visible': True, 'choices': True, 'autofilter': True,},
+        {'name': 'date', 'lookup_field': '__icontains', },
+        {'name': 'file_number', 'title': 'File No.', 'lookup_field': '__icontains',},
+        {'name': 'concerned_department', 'title':'Department', 'foreign_field': 'concerned_department__name',  'choices': True, 'autofilter': True,},
+        {'name': 'subject','lookup_field': '__icontains', },
+        {'name': 'type', 'foreign_field': 'type__name',  'choices': True, 'autofilter': True,},
         # {'name': 'comment', 'visible': False, 'lookup_field': '__icontains', },
     ]
 

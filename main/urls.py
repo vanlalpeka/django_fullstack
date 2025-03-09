@@ -8,4 +8,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),  # Include the URLs of the allauth app
     # path('invitations/', include('invitations.urls', namespace='invitations')),  # Include the URLs of the invitations app
     path('', include('app.urls')),  # Include the URLs of your new app
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
