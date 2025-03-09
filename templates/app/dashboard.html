@@ -10,24 +10,21 @@
 
 {% block content %}
 
-<div class="row">
-    <div class="card">
-      <div class="card-content  flow-text">
-        <div class="section">
-          <p> <strong>Dashboard</strong></p>
-        </div>
-        <div class="divider">
+<p> <strong>Dashboard</strong></p>
+<span class="d-block">
+  
+{% autoescape off %}
+{{fig1|safe}}              
+{% endautoescape %}
+</span>
 
-        </div>
-        <div class="section">
-          {% autoescape off %}
-          {{fig1|safe}}              
-          {{fig2|safe}}              
-          {% endautoescape %}
-        </div>
-      </div>
-  </div>
-</div>
+<span class="d-block">
+  
+  {% autoescape off %}
+  {{fig2|safe}}              
+  {% endautoescape %}
+</span>
+          
 
 {% endblock %}
 
