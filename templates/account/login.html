@@ -1,21 +1,37 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% load i18n %}
 {% load allauth account %}
+{% load django_bootstrap5 %}
 
 {% block title %}Login{% endblock %}
 
+{% block extrastyle %}
+<link href="{% static 'css/custom.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-<div class="container">
+<div class="container-fluid vh-100 align-items-center justify-content-center py-5">
     <h2>Login</h2>
     <form method="post" action="{% url 'account_login' %}">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% bootstrap_form form %}
+
+        <!-- {{ form.as_p }} -->
         <!-- {% if next %}
         <input type="hidden" name="next" value="{{ next }}">
         {% endif %} -->
-        <button type="submit" class="btn btn-primary">Login</button>
+        {% bootstrap_button button_type="submit" content="Login" %}
+
+        {% url 'landing_page' as landing_page %}
+
+        {% bootstrap_button button_type="link" href=landing_page content="Cancel" button_class="btn-dark" %}
+
+        <!-- <button type="submit" class="btn btn-primary">Login</button> -->
     </form>
+    <a href="{% url 'landing_page' %}" class="btn btn-outline-light btn-lg">Cancel</a>
+
     <!-- <p>
         <a href="{% url 'account_reset_password' %}">Forgot Password?</a>
     </p>

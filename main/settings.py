@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "phonenumber_field",
     'import_export',
     'ajax_datatable',
+    "django_bootstrap5",
+
 ]
 
 MIDDLEWARE = [
