@@ -9,9 +9,8 @@
 {% if user.is_authenticated %}
 <section class="vh-100">
     <div class="container py-5 h-100">
-        <h3>Welcome {{ user.first_name }} {{user.last_name}} </h3>
+        <h3>Welcome {{ user.first_name }} {{user.last_name}},</h3>
         <p>Thank you for logging in.</p>
-    
     </div>
 </section>
 {% else %}
