@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 from decouple import config
 
+
+ADMINS = [('Admin', config('MY_EMAIL'))]
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -76,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'app.utils.context_processors.site_settings',
             ],
         },
     },
@@ -98,6 +102,15 @@ DATABASES = {
     }
 }
 
+# Filesystem caching
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": "/dev/shm/django_cache",
+        # "TIMEOUT": 60*5,
+        # "OPTIONS": {"MAX_ENTRIES": 1000},
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
