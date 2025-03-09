@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'import_export',
     'ajax_datatable',
     "django_bootstrap5",
-
 ]
 
 MIDDLEWARE = [
@@ -164,14 +163,13 @@ LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_LOGIN_METHODS = {"username"}
 ACCOUNT_EMAIL_REQUIRED = False
-# ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_SESSION_REMEMBER = True
 
 # ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
 # ACCOUNT_LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_FORMS = {
-    'signup': 'app.forms.CustomSignupForm',
+    # 'signup': 'app.forms.CustomSignupForm',
     # 'login': 'app.forms.CustomLoginForm'
 }
 
@@ -211,3 +209,5 @@ AJAX_DATATABLE_TRACE_QUERYSET = False
 AJAX_DATATABLE_TEST_FILTERS = False
 AJAX_DATATABLE_DISABLE_QUERYSET_OPTIMIZATION = False
 AJAX_DATATABLE_STRIP_HTML_TAGS = True
+
+
