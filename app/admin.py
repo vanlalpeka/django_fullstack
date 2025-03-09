@@ -78,7 +78,7 @@ class CustomUserAdmin(ImportExportModelAdmin, ExportActionMixin):
                 # Exclude specific fields
                 filtered_fields = [
                     field for field in fields 
-                    if field not in ("groups", "user_permissions", "is_superuser", "is_staff", "email", "last_login")
+                    if field not in ("groups", "user_permissions", "is_superuser", "is_staff", "email", "last_login", 'date_joined')
                 ]
                 # Add back only non-excluded fields
                 if filtered_fields:
