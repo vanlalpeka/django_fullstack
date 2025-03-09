@@ -14,6 +14,21 @@ from import_export.widgets import ForeignKeyWidget, DateTimeWidget
 #         (None, {'fields': ('phone_number',)}),
 #     )
 
+# from django.contrib import admin
+# from django.contrib.auth.admin import UserAdmin
+# from django.contrib.auth.models import User
+
+# class CustomUserAdmin(UserAdmin):
+#     def get_readonly_fields(self, request, obj=None):
+#         # Make 'is_superuser' read-only for non-superusers
+#         if not request.user.is_superuser:
+#             return self.readonly_fields + ('is_superuser',)
+#         return self.readonly_fields
+
+# admin.site.unregister(User)
+# admin.site.register(User, CustomUserAdmin)
+
+
 class NoteTypeResource(resources.ModelResource):
     class Meta:
         model = NoteType 
@@ -50,6 +65,27 @@ class CustomUserAdmin(ImportExportModelAdmin, ExportActionMixin):
     list_display = ('username', 'designation', 'phone_number')
     search_fields = ('username', 'designation', 'phone_number')
     resource_classes = [CustomUserResource]
+
+    def get_fieldsets(self, request, obj=None):
+        fieldsets = super().get_fieldsets(request, obj)
+        
+        # Check if the logged-in user is not a superuser
+        if not request.user.is_superuser:
+            # Filter out unwanted fields
+            filtered_fieldsets = []
+            for name, options in fieldsets:
+                fields = options.get("fields", [])
+                # Exclude specific fields
+                filtered_fields = [
+                    field for field in fields 
+                    if field not in ("groups", "user_permissions", "is_superuser", "is_staff", "email", "last_login")
+                ]
+                # Add back only non-excluded fields
+                if filtered_fields:
+                    filtered_fieldsets.append((name, {"fields": filtered_fields}))
+            return tuple(filtered_fieldsets)
+        
+        return fieldsets
 
 
 
