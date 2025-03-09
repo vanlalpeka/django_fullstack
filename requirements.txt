@@ -1,4 +1,4 @@
-django==4.1
+django==4.2
 python-decouple
 psycopg2-binary
 # gunicorn
@@ -16,3 +16,4 @@ cryptography
 plotly
 pandas
 Pillow
+django-bootstrap5==25.1

@@ -14,36 +14,43 @@
 {% block content %}
 <div class="background-image"></div>
 <div class="overlay">
-    <div class="overlay-text">
-        <div class="card shadow-2-strong" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
-  
-                <h2>Login</h2>
-                <form method="post" action="{% url 'account_login' %}">
-                    {% csrf_token %}
-                    {% bootstrap_form form show_label=false show_help=false exclude=remember %}
-            
-                    <!-- {{ form.as_p }} -->
-                    <!-- {% if next %}
-                    <input type="hidden" name="next" value="{{ next }}">
-                    {% endif %} -->
-                    {% bootstrap_button button_type="submit" content="Login" %}
-            
-                    {% url 'landing_page' as landing_page %}
-            
-                    {% bootstrap_button button_type="link" href=landing_page content="Cancel" button_class="btn-dark" %}
-            
-                    <!-- <button type="submit" class="btn btn-primary">Login</button> -->
-                </form>
-            
-                <!-- <p>
-                    <a href="{% url 'account_reset_password' %}">Forgot Password?</a>
-                </p>
-                <p>
-                    Don't have an account? <a href="{% url 'account_signup' %}">Sign up here</a>.
-                </p> -->
+    <section class="w-100">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+              <div class="card shadow-2-strong bg-dark" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+      
+                    <h2 class="mb-5 text-white text-uppercase">Login</h2>
+                    <form method="post" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        {% bootstrap_form form show_label=false show_help=false exclude=remember %}
+                
+                        <!-- {{ form.as_p }} -->
+                        <!-- {% if next %}
+                        <input type="hidden" name="next" value="{{ next }}">
+                        {% endif %} -->
+                        {% bootstrap_button button_type="submit" button_class="btn btn-primary btn-lg px-5  w-100 my-3" content="Login" %}
+                
+                        {% url 'landing_page' as landing_page %}
+                
+                        {% bootstrap_button button_type="link" href=landing_page content="Cancel" button_class="btn btn-outline-light btn-lg px-5 w-100" %}
+                
+                        <!-- <button type="submit" class="btn btn-primary">Login</button> -->
+                    </form>
+                
+                    <!-- <p>
+                        <a href="{% url 'account_reset_password' %}">Forgot Password?</a>
+                    </p>
+                    <p>
+                        Don't have an account? <a href="{% url 'account_signup' %}">Sign up here</a>.
+                    </p> -->
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
     </div>
 </div>
 

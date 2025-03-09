@@ -7,17 +7,23 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-    <h3>Welcome {{ user.first_name }} {{user.last_name}} </h3>
-    <p>Thank you for logging in.</p>
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <h3>Welcome {{ user.first_name }} {{user.last_name}} </h3>
+        <p>Thank you for logging in.</p>
+    
+    </div>
+</section>
 {% else %}
     <div class="background-image"></div>
     <div class="overlay">
         <div class="overlay-text">
             <h1 class="mb-3">Welcome to Thul</h1>
+            <hr class="my-4">
             <h4 class="mb-3">The Knowledge Management System of Law and Judicial Department, Mizoram</h4>
             <p>We're working hard to finish the development of this site.</p>
             <p>Until then, please login to explore the features under construction.</p>
-            <a href="{% url 'account_login' %}" class="btn btn-outline-light btn-lg">Login</a>
+            <a href="{% url 'account_login' %}" class="btn btn-outline-light btn-lg  px-5  w-50">Login</a>
         </div>
     </div>
   {% endif %}
