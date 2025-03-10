@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth import logout
 from .models import Note, Department, CustomUser
-
+from .mixins import SuperUserOrGroupRequiredMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View, ListView, DetailView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -61,6 +61,7 @@ class DashboardView(LoginRequiredMixin, DetailView):
     # model = Note
     # template_name = 'app/dashboard.html'
     context_object_name = 'dashboard'
+    group_name = 'LMS'
 
     def get(self, request):        
         template = 'app/dashboard.html'
