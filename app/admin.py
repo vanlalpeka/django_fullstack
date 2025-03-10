@@ -9,26 +9,67 @@ from import_export.admin import ImportExportModelAdmin, ExportActionMixin
 from import_export import fields, resources
 from import_export.widgets import ForeignKeyWidget, DateTimeWidget
 
-# class CustomUserAdmin(UserAdmin):
-#     fieldsets = UserAdmin.fieldsets + (
-#         (None, {'fields': ('phone_number',)}),
-#     )
 
-# from django.contrib import admin
-# from django.contrib.auth.admin import UserAdmin
-# from django.contrib.auth.models import User
-
-# class CustomUserAdmin(UserAdmin):
-#     def get_readonly_fields(self, request, obj=None):
-#         # Make 'is_superuser' read-only for non-superusers
-#         if not request.user.is_superuser:
-#             return self.readonly_fields + ('is_superuser',)
-#         return self.readonly_fields
-
-# admin.site.unregister(User)
-# admin.site.register(User, CustomUserAdmin)
+from django.contrib.admin.models import LogEntry, DELETION
+from django.utils.html import escape
+from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 
+############################################################################################################
+# User Actions Log
+############################################################################################################
+@admin.register(LogEntry)
+class LogEntryAdmin(admin.ModelAdmin):
+    date_hierarchy = 'action_time'
+
+    list_filter = [
+        'user',
+        'content_type',
+        'action_flag'
+    ]
+
+    search_fields = [
+        'object_repr',
+        'change_message'
+    ]
+
+    list_display = [
+        'action_time',
+        'user',
+        'content_type',
+        'object_link',
+        'action_flag',
+    ]
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_view_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+    def object_link(self, obj):
+        if obj.action_flag == DELETION:
+            link = escape(obj.object_repr)
+        else:
+            ct = obj.content_type
+            link = '<a href="%s">%s</a>' % (
+                reverse('admin:%s_%s_change' % (ct.app_label, ct.model), args=[obj.object_id]),
+                escape(obj.object_repr),
+            )
+        return mark_safe(link)
+    object_link.admin_order_field = "object_repr"
+    object_link.short_description = "object"
+
+############################################################################################################
+# Note Type
+############################################################################################################
 class NoteTypeResource(resources.ModelResource):
     class Meta:
         model = NoteType 
@@ -39,7 +80,9 @@ class NoteTypeAdmin(ImportExportModelAdmin, ExportActionMixin):
     resource_classes = [NoteTypeResource]
 
 
-
+############################################################################################################
+# Department
+############################################################################################################
 class DepartmentResource(resources.ModelResource):
     class Meta:
         model = Department 
@@ -49,8 +92,31 @@ class DepartmentResource(resources.ModelResource):
 class DepartmentAdmin(ImportExportModelAdmin, ExportActionMixin):
     resource_classes = [DepartmentResource]
 
+############################################################################################################
+# Note
+############################################################################################################
+class NoteResource(resources.ModelResource):
+    concerned_department = fields.Field(
+        column_name = "concerned_department",
+        attribute = "concerned_department",
+        widget = ForeignKeyWidget(Department, 'name')
+    )
+
+    class Meta:
+        model = Note 
+        permissions = (('import_note', 'Can import'), ('export_note', 'Can export'))
 
 
+@admin.register(Note)
+class NoteAdmin(ImportExportModelAdmin, ExportActionMixin):
+    list_display = ('file_number', 'subject' ,'type', 'concerned_department', 'date')
+    search_fields = ('file_number', 'concerned_department')
+    list_filter = ('file_number', 'concerned_department')
+    resource_classes = [NoteResource]
+
+############################################################################################################
+# Custom User
+############################################################################################################
 class CustomUserResource(resources.ModelResource):
 
     def before_import_row(self, row, **kwargs):
@@ -89,21 +155,3 @@ class CustomUserAdmin(ImportExportModelAdmin, ExportActionMixin):
 
 
 
-class NoteResource(resources.ModelResource):
-    concerned_department = fields.Field(
-        column_name = "concerned_department",
-        attribute = "concerned_department",
-        widget = ForeignKeyWidget(Department, 'name')
-    )
-
-    class Meta:
-        model = Note 
-        permissions = (('import_note', 'Can import'), ('export_note', 'Can export'))
-
-
-@admin.register(Note)
-class NoteAdmin(ImportExportModelAdmin, ExportActionMixin):
-    list_display = ('file_number', 'subject' ,'type', 'concerned_department', 'date')
-    search_fields = ('file_number', 'concerned_department')
-    list_filter = ('file_number', 'concerned_department')
-    resource_classes = [NoteResource]
