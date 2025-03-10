@@ -158,6 +158,10 @@ MEDIA_URL = '/media/'
 # Path where media is stored
 MEDIA_ROOT = BASE_DIR / 'media'
 
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 512000  # 500 kB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 512000  # 500 kB
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
