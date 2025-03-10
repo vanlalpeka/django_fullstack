@@ -54,6 +54,11 @@ INSTALLED_APPS = [
     "django_bootstrap5",
 ]
 
+# Session settings
+SESSION_COOKIE_AGE = 60 * 60 * 4  # 4 hr
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # False to ensure the session persists even if the user closes their browser.
+SESSION_SAVE_EVERY_REQUEST = True  # True to update the session age on every request.
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -106,15 +111,15 @@ DATABASES = {
     }
 }
 
-# Filesystem caching
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": "/dev/shm/django_cache",
-        # "TIMEOUT": 60*5,
-        # "OPTIONS": {"MAX_ENTRIES": 1000},
-    }
-}
+# # Filesystem caching
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+#         "LOCATION": "/dev/shm/django_cache",
+#         # "TIMEOUT": 60*5,
+#         # "OPTIONS": {"MAX_ENTRIES": 1000},
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
