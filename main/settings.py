@@ -83,7 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'app.utils.context_processors.site_settings',
+                'app.utils.context_processors.site_settings',
             ],
         },
     },
@@ -120,6 +120,35 @@ DATABASES = {
 #         # "OPTIONS": {"MAX_ENTRIES": 1000},
 #     }
 # }
+
+# SECURITY SETTINGS
+if DEBUG:
+    SECURE_SSL_REDIRECT=False
+    SESSION_COOKIE_SECURE=False
+    CSRF_COOKIE_SECURE=False
+
+else:
+    # sets the X-XSS-Protection: 1; mode=block header on all responses that do not already have it.
+    # This header stops pages from loading when they detect reflected cross-site scripting (XSS) attacks.
+    # This ensures third parties cannot inject scripts into your project.
+    SECURE_BROWSER_XSS_FILTER = True
+
+    # redirects all HTTP requests to HTTPS (unless exempt). 
+    # If you have Nginx or Apache configured to do this already, this setting will be redundant.
+    SECURE_SSL_REDIRECT = True  
+
+    # tells the browser that cookies can only be handled over HTTPS
+    SESSION_COOKIE_SECURE = True
+
+    # same as SESSION_COOKIE_SECURE but applies to your CSRF token
+    # ensures any forms submitted (for logins, signups, and so on) to the project were created by the project and not a third party.
+    CSRF_COOKIE_SECURE = True
+
+    # informs the browser that the project should only be accessed using HTTPS
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
