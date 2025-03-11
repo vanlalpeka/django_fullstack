@@ -55,8 +55,8 @@ INSTALLED_APPS = [
 ]
 
 # Session settings
-SESSION_COOKIE_AGE = 60 * 60 * 4  # 4 hr
-SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # False to ensure the session persists even if the user closes their browser.
+SESSION_COOKIE_AGE = 60 * 60 * 1  # 1 hr
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # False to ensure the session persists even if the user closes their browser.
 SESSION_SAVE_EVERY_REQUEST = True  # True to update the session age on every request.
 
 MIDDLEWARE = [
