@@ -111,7 +111,7 @@ class DashboardView(LoginRequiredMixin, SuperUserOrGroupRequiredMixin, DetailVie
         # plots = [fig1.to_html(full_html=False), fig2.to_html(full_html=False)]
 
         return render(request, template, 
-                    #   context={"fig1": fig1.to_html(full_html=False, config={'displaylogo': False}, include_plotlyjs=False),
-                    #            "fig2": fig2.to_html(full_html=False, config={'displaylogo': False}, include_plotlyjs=False)})
-                      context={"fig1": fig1.to_html(full_html=False, config={'displaylogo': False}),
-                               "fig2": fig2.to_html(full_html=False, config={'displaylogo': False})})
+                      context={"fig1": fig1.to_html(full_html=False, config={'displaylogo': False}, include_plotlyjs=False),
+                               "fig2": fig2.to_html(full_html=False, config={'displaylogo': False}, include_plotlyjs=False)})
+                    #   context={"fig1": fig1.to_html(full_html=False, config={'displaylogo': False}),
+                    #            "fig2": fig2.to_html(full_html=False, config={'displaylogo': False})})

@@ -49,7 +49,6 @@
 
     <script language="javascript">
         $( document ).ready(function() {
-
             AjaxDatatableViewUtils.initialize_table(
                 $('#datatable'),
                 "{% url 'ajax_datatable_notes' %}",
@@ -58,20 +57,12 @@
                     autoWidth: false,
                     full_row_select: false,
                     scrollX: false,
-                    // dom: 'Brtfip',
                     responsive: true,
 
                 }, {
-                    // extra_data
-                    // ...
-                    // columnDefs: [ {
-                    //     targets: 1,
-                    //     render: DataTable.render.ellipsis( 17, true )
-                    //     } ]
                 },
             );
         });
-    
     </script>
 
 {% endblock extrajs %}

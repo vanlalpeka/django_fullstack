@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'import_export',
     'ajax_datatable',
     "django_bootstrap5",
+        "django_minify_html",
+
 ]
 
 # Session settings
