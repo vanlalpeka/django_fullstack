@@ -102,6 +102,12 @@ class NoteResource(resources.ModelResource):
         widget = ForeignKeyWidget(Department, 'name')
     )
 
+    type = fields.Field(
+        column_name = "type",
+        attribute = "type",
+        widget = ForeignKeyWidget(NoteType, 'name')
+    )
+
     class Meta:
         model = Note 
         permissions = (('import_note', 'Can import'), ('export_note', 'Can export'))
