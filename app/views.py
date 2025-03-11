@@ -29,13 +29,14 @@ def custom_logout_view(request):
 class LandingPageView(TemplateView):
     template_name = 'app/landing_page.html'
 
-class NoteListView(LoginRequiredMixin, TemplateView):
+class NoteListView(LoginRequiredMixin, SuperUserOrGroupRequiredMixin, TemplateView):
     template_name = 'app/note_list.html'
+    group_name = 'LMS'
 
-class NoteDetailView(LoginRequiredMixin, DetailView):
-    model = Note
-    template_name = 'app/note_detail.html'
-    context_object_name = 'note'
+# class NoteDetailView(LoginRequiredMixin, DetailView):
+#     model = Note
+#     template_name = 'app/note_detail.html'
+#     context_object_name = 'note'
 
     # def get(self, request, pk, *args, **kwargs):        
     #     template = 'app/note_detail.html'
@@ -57,7 +58,7 @@ class CustomUserUpdateView(LoginRequiredMixin, DetailView):
 
     #     return render(request, template_name, context)
     
-class DashboardView(LoginRequiredMixin, DetailView):
+class DashboardView(LoginRequiredMixin, SuperUserOrGroupRequiredMixin, DetailView):
     # model = Note
     # template_name = 'app/dashboard.html'
     context_object_name = 'dashboard'
