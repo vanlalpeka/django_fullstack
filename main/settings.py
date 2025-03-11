@@ -185,7 +185,7 @@ USE_TZ = True    # Enable timezone support (recommended)
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles' # In production, static files are served from this directory
 
 # Base url to serve media files
 MEDIA_URL = '/media/'
